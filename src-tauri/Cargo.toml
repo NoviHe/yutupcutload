@@ -1,0 +1,27 @@
+[package]
+name = "yutupcutload"
+version = "0.1.0"
+description = "Partial YouTube & VOD clip downloader powered by Tauri, yt-dlp, and ffmpeg"
+authors = ["YutupCutLoad"]
+edition = "2021"
+
+[lib]
+name = "yutupcutload_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+uuid = { version = "1", features = ["v4"] }
+regex = "1"
+dirs = "6"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = ["Win32_Foundation", "Win32_Security", "Win32_System_JobObjects", "Win32_System_Threading"] }
